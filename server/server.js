@@ -11,8 +11,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/pdfgenerator', { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect('mongodb+srv://manasmishra904:e2cMtFFKdl4EV5PR@cluster0.pvpd8gf.mongodb.net/pdfgenerator?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
+ 
 // Define schema and model
 const pdfSchema = new mongoose.Schema({
   title: String,
