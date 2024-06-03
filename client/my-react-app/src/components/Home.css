@@ -1,0 +1,28 @@
+/* src/components/Home.css */
+
+/* Style for the container div */
+.container {
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Style for the heading */
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  /* Style for the links */
+  .link {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #007bff; /* Blue color for links */
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  

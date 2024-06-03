@@ -7,7 +7,7 @@ const DownloadPDF = () => {
   useEffect(() => {
     const fetchPDFs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/pdfs');
+        const response = await axios.get('https://ev3-fullstack-node.onrender.com/pdfs');
         setPdfs(response.data);
       } catch (error) {
         console.error('Error fetching PDFs:', error);
@@ -18,25 +18,18 @@ const DownloadPDF = () => {
 
   const handleDownloadPDF = async (pdfId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/download-pdf/${pdfId}`, {
+      const response = await axios.get(`https://ev3-fullstack-node.onrender.com/download-pdf/${pdfId}`, {
         responseType: 'blob', // Set response type to blob
       });
-      // Create a blob URL for the PDF
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      // Create a link element
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', `pdf_${pdfId}.pdf`); // Set the download attribute
-      // Append the link to the body and click it programmatically
-      document.body.appendChild(link);
-      link.click();
-      // Remove the link element from the body
-      document.body.removeChild(link);
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      // Open the PDF in a new tab
+      window.open(url);
     } catch (error) {
       console.error('Error downloading PDF:', error);
     }
   };
-
+  
   return (
     <div>
       <h2>Available PDFs</h2>

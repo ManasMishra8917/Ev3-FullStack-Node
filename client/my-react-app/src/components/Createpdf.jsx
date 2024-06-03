@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import './Createpdf.css'; // Import the CSS file
 
 const CreatePDF = () => {
   const [title, setTitle] = useState('');
@@ -43,7 +44,7 @@ const CreatePDF = () => {
     formData.append('pages', JSON.stringify(pages));
 
     try {
-      const response = await axios.post('http://localhost:5000/create-pdf', formData, {
+      const response = await axios.post('https://ev3-fullstack-node.onrender.com/create-pdf', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert('PDF Created Successfully');
@@ -54,7 +55,7 @@ const CreatePDF = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className="form-container">
       <div>
         <label>Title</label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
@@ -71,12 +72,12 @@ const CreatePDF = () => {
         <label>Back Cover Image</label>
         <input type="file" onChange={(e) => setBackCoverImage(e.target.files[0])} required />
       </div>
-      <div>
+      <div className="pages-container">
         <label>Pages</label>
         {pages.map((page, index) => (
-          <div key={index}>
-            <ReactQuill value={page.content} onChange={(content) => handlePageContentChange(index, content)} />
-            <select value={page.alignment} onChange={(e) => handlePageAlignmentChange(index, e.target.value)}>
+          <div key={index} className="page">
+            <ReactQuill value={page.content} onChange={(content) => handlePageContentChange(index, content)} className="react-quill" />
+            <select value={page.alignment} onChange={(e) => handlePageAlignmentChange(index, e.target.value)} className="page-alignment-select">
               <option value="left">Left</option>
               <option value="center">Center</option>
               <option value="right">Right</option>
@@ -84,9 +85,9 @@ const CreatePDF = () => {
             <input type="file" onChange={(e) => handlePageBackgroundChange(index, e.target.files[0])} />
           </div>
         ))}
-        <button type="button" onClick={handleAddPage}>Add Page</button>
+        <button type="button" onClick={handleAddPage} className="add-page-button">Add Page</button>
       </div>
-      <button type="submit">Create PDF</button>
+      <button type="submit" >Create PDF</button>
     </form>
   );
 };

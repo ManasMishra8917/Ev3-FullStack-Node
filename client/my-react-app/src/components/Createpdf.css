@@ -1,0 +1,46 @@
+/* src/components/CreatePDF.css */
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-container > div {
+    margin-bottom: 20px;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .pages-container {
+    margin-top: 20px;
+  }
+  
+  .page {
+    margin-bottom: 20px;
+  }
+  
+  .react-quill {
+    margin-bottom: 10px;
+  }
+  
+  .page-alignment-select {
+    margin-bottom: 10px;
+  }
+  
+  .add-page-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .add-page-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create-pdf" element={<CreatePDF />} />
-        <Route path="/pdfs" element=<DownloadPDF /> />
+        <Route path="/pdfs" element={<DownloadPDF /> }/>
         {/* Uncomment and create the Admin component if needed */}
         {/* <Route path="/admin" element={<Admin />} /> */}
       </Routes>
